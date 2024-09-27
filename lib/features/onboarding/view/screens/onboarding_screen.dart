@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:social/core/theme/app_palette.dart';
-import 'package:social/features/onboarding/models/onboarding_items.dart';
 import 'package:social/features/onboarding/view/widgets/custom_clipper.dart';
+import 'package:social/features/onboarding/viewmodel/onboarding_view_model.dart';
+import 'package:social/init_dependencies.dart';
 
 class OnboardingScreen extends StatelessWidget {
+  static const routeName = '/onboarding-screen';
   OnboardingScreen({super.key});
 
-  final pageController = PageController();
-  final onboardingItems = OnboardingItems.items;
+  final sharedPreferences = getIt<SharedPreferences>();
+
   @override
   Widget build(BuildContext context) {
+    final viewModel = OnboardingViewModel(sharedPreferences);
+    final pageController = viewModel.pageController;
+    final onboardingItems = viewModel.onboardingItems;
     return Scaffold(body: LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return PageView.builder(
@@ -34,7 +40,8 @@ class OnboardingScreen extends StatelessWidget {
                                 ? Align(
                                     alignment: Alignment.topRight,
                                     child: TextButton(
-                                      onPressed: () => _skipToLastPage(),
+                                      onPressed: () =>
+                                          viewModel.skipToLastPage(),
                                       child: const Text(
                                         'Skip',
                                         style: TextStyle(
@@ -75,7 +82,8 @@ class OnboardingScreen extends StatelessWidget {
                             children: [
                               index != 0
                                   ? OutlinedButton(
-                                      onPressed: () => _skipToPreviousPage(),
+                                      onPressed: () =>
+                                          viewModel.skipToPreviousPage(),
                                       style: TextButton.styleFrom(
                                         side: const BorderSide(
                                             color: AppPalette.primary),
@@ -98,7 +106,10 @@ class OnboardingScreen extends StatelessWidget {
                                     type: WormType.thinUnderground),
                               ),
                               TextButton(
-                                onPressed: () => _skipToNextPage(),
+                                onPressed: () =>
+                                    index != onboardingItems.length - 1
+                                        ? viewModel.skipToNextPage()
+                                        : viewModel.goToAuth(context),
                                 style: TextButton.styleFrom(
                                     foregroundColor: AppPalette.whiteColor,
                                     backgroundColor: AppPalette.primary,
@@ -116,19 +127,5 @@ class OnboardingScreen extends StatelessWidget {
             });
       },
     ));
-  }
-
-  void _skipToLastPage() {
-    pageController.jumpToPage(onboardingItems.length - 1);
-  }
-
-  void _skipToNextPage() {
-    pageController.nextPage(
-        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-  }
-
-  void _skipToPreviousPage() {
-    pageController.previousPage(
-        duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
   }
 }
