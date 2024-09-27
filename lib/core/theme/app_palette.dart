@@ -6,6 +6,6 @@ class AppPalette {
   static const Color greyColor = Color(0xFF797979);
   static const Color primary = Color(0xFFF9622E);
   static const Color whiteColor = Colors.white;
-
+  static const Color transparentColor = Colors.transparent;
 
 }
