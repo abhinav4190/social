@@ -5,7 +5,7 @@ import 'package:social/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupsharedPreferences();
+  await setupsharedPreferences();
   return runApp(const MyApp());
 }
 

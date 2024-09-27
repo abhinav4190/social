@@ -5,6 +5,9 @@ import 'package:social/core/theme/app_palette.dart';
 class AppTheme {
   static final lightThemeMode = ThemeData(
     fontFamily: 'Inter',
-    scaffoldBackgroundColor: AppPalette.scaffoldBackground
+    scaffoldBackgroundColor: AppPalette.scaffoldBackground, 
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppPalette.scaffoldBackground
+    )
   );
 }

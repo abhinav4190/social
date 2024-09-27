@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:social/features/auth/view/auth_screen.dart';
+import 'package:social/features/auth/view/screens/get_started_screen.dart';
 import 'package:social/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:social/init_dependencies.dart';
 
@@ -14,9 +14,9 @@ class AppRouter{
       builder: (_, __) => OnboardingScreen(),
       ),
       GoRoute(
-      name: AuthScreen.routeName,
-      path: AuthScreen.routeName,
-      builder: (_, __) => const AuthScreen(),
+      name: GetStartedScreen.routeName,
+      path: GetStartedScreen.routeName,
+      builder: (_, __) => const GetStartedScreen(),
       )
  ]);
 
@@ -24,6 +24,6 @@ class AppRouter{
   static String _initialLocation() {
     final sharedPreferences = getIt<SharedPreferences>();
     final isOnboardingCompleted = sharedPreferences.getBool('onboarding_completed') ?? false;
-    return isOnboardingCompleted ? AuthScreen.routeName : OnboardingScreen.routeName;
+    return isOnboardingCompleted ? GetStartedScreen.routeName : OnboardingScreen.routeName;
   }
 }
