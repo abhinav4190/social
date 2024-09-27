@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final GetIt getIt = GetIt.instance;
 
-Future<void> setupsharedPreferences() async {
+Future<void> setupSharedPreferences() async {
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
   await getIt.allReady();

@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social/features/auth/view/screens/get_started_screen.dart';
+import 'package:social/features/auth/view/screens/signin_screen.dart';
+import 'package:social/features/auth/view/screens/signup_screen.dart';
 import 'package:social/features/onboarding/view/screens/onboarding_screen.dart';
 import 'package:social/init_dependencies.dart';
 
@@ -17,7 +19,18 @@ class AppRouter{
       name: GetStartedScreen.routeName,
       path: GetStartedScreen.routeName,
       builder: (_, __) => const GetStartedScreen(),
-      )
+      ),
+      GoRoute(
+        name: SignupScreen.routeName,
+        path: SignupScreen.routeName,
+        builder: (_, __) => const SignupScreen(),
+        ),
+        GoRoute(
+        name: SigninScreen.routeName,
+        path: SigninScreen.routeName,
+        builder: (_, __) => const SigninScreen(),
+        )
+
  ]);
 
   // Determine the initial location based on SharedPreferences

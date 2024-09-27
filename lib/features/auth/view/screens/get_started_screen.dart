@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:social/core/constants/image_paths.dart';
 import 'package:social/core/theme/app_palette.dart';
 import 'package:social/core/widgets/custom_button.dart';
+import 'package:social/features/auth/view/screens/signup_screen.dart';
+import 'package:social/features/auth/view/widgets/auth_option_row.dart';
 
 class GetStartedScreen extends StatelessWidget {
   static const routeName = '/get-started';
@@ -19,7 +23,7 @@ class GetStartedScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/logo.png',
+                ImagePaths.logo,
                 width: constraints.maxWidth * 0.35,
               ),
               SizedBox(
@@ -27,21 +31,17 @@ class GetStartedScreen extends StatelessWidget {
               ),
               Flexible(
                   child: Image.asset(
-                'assets/images/auth_banner.png',
+                ImagePaths.authBanner,
               )),
               SizedBox(
                 height: constraints.maxHeight * 0.04,
               ),
               RichText(
                 textAlign: TextAlign.center,
-                text: const TextSpan(
+                text: TextSpan(
                     text: 'Your Premier ',
-                    style: TextStyle(
-                      fontSize: 26,
-                      color: AppPalette.blackColor,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    children: [
+                    style: Theme.of(context).textTheme.titleLarge,
+                    children: const [
                       TextSpan(
                         text: 'Social Connection App',
                         style: TextStyle(
@@ -64,34 +64,14 @@ class GetStartedScreen extends StatelessWidget {
               SizedBox(
                 height: constraints.maxHeight * 0.03,
               ),
-              CustomButton(onPressed: () {}, buttonText: 'Let\'s Get Started'),
+              CustomButton(onPressed: () => context.goNamed(SignupScreen.routeName), buttonText: 'Let\'s Get Started'),
               SizedBox(
                 height: constraints.maxHeight * 0.03,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Already have an account?',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'Sign In',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: AppPalette.primary,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppPalette.primary,
-                    ),
-                  ),
-                ],
+              const AuthOptionRow(
+                promptText: 'Already have an account?',
+                actionText: 'Sign In',
               ),
-            
-               
             ],
           ),
         ),
