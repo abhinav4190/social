@@ -6,8 +6,9 @@ class OnboardingItemsModel {
   final RichText title;
   final Text description;
 
-  OnboardingItemsModel(
-      {required this.imagePath,
-      required this.title,
-      required this.description});
+  OnboardingItemsModel({
+    required this.imagePath,
+    required this.title,
+    required this.description,
+  });
 }

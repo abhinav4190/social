@@ -9,6 +9,7 @@ class OnboardingViewModel {
   final PageController pageController = PageController();
   final List<OnboardingItemsModel> onboardingItems = OnboardingItems.items;
   final SharedPreferences _sharedPreferences;
+
   OnboardingViewModel(this._sharedPreferences);
 
   /// Navigates to the last page of the onboarding.
@@ -24,7 +25,7 @@ class OnboardingViewModel {
     );
   }
 
-  /// Marks the onboarding as true -- completed in SharedPreferences and navigate to Auth screen.
+  /// Marks the onboarding as completed in SharedPreferences and navigates to the Auth screen.
   void goToAuth(BuildContext context) async {
     context.goNamed(GetStartedScreen.routeName);
     await _sharedPreferences.setBool('onboarding_completed', true);

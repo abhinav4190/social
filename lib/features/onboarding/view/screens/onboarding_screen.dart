@@ -17,9 +17,11 @@ class OnboardingScreen extends StatelessWidget {
     final viewModel = OnboardingViewModel(sharedPreferences);
     final pageController = viewModel.pageController;
     final onboardingItems = viewModel.onboardingItems;
-    return Scaffold(body: LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return PageView.builder(
+
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return PageView.builder(
             controller: pageController,
             itemCount: onboardingItems.length,
             itemBuilder: (context, index) {
@@ -37,19 +39,20 @@ class OnboardingScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             index != onboardingItems.length - 1
-                                ? Align(
-                                    alignment: Alignment.topRight,
-                                    child: TextButton(
-                                      onPressed: () =>
-                                          viewModel.skipToLastPage(),
-                                      child: const Text(
-                                        'Skip',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: AppPalette.primary),
+                              ? Align(
+                                  alignment: Alignment.topRight,
+                                  child: TextButton(
+                                    onPressed: () => viewModel.skipToLastPage(),
+                                    child: const Text(
+                                      'Skip',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: AppPalette.primary,
                                       ),
-                                    ))
-                                : const SizedBox(),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
                             Flexible(
                               child: SizedBox(
                                 height: constraints.maxHeight * 0.56,
@@ -65,9 +68,7 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                            horizontal: constraints.maxWidth * 0.06)
-                        .copyWith(top: 5),
+                    padding: EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.06).copyWith(top: 5),
                     child: SafeArea(
                       top: false,
                       child: Column(
@@ -81,51 +82,51 @@ class OnboardingScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               index != 0
-                                  ? OutlinedButton(
-                                      onPressed: () =>
-                                          viewModel.skipToPreviousPage(),
-                                      style: TextButton.styleFrom(
-                                        side: const BorderSide(
-                                            color: AppPalette.primary),
-                                        shape: const CircleBorder(),
-                                        minimumSize: const Size(50, 50),
-                                        foregroundColor: AppPalette.primary,
-                                      ),
-                                      child: const Icon(Icons.arrow_back),
-                                    )
-                                  : const SizedBox(width: 50),
+                                ? OutlinedButton(
+                                    onPressed: () => viewModel.skipToPreviousPage(),
+                                    style: TextButton.styleFrom(
+                                      side: const BorderSide(color: AppPalette.primary),
+                                      shape: const CircleBorder(),
+                                      minimumSize: const Size(50, 50),
+                                      foregroundColor: AppPalette.primary,
+                                    ),
+                                    child: const Icon(Icons.arrow_back),
+                                  )
+                                : const SizedBox(width: 50),
                               SmoothPageIndicator(
                                 controller: pageController,
                                 count: onboardingItems.length,
                                 effect: WormEffect(
-                                    dotHeight: 12,
-                                    dotWidth: 12,
-                                    activeDotColor: AppPalette.primary,
-                                    dotColor:
-                                        AppPalette.primary.withOpacity(0.5),
-                                    type: WormType.thinUnderground),
+                                  dotHeight: 12,
+                                  dotWidth: 12,
+                                  activeDotColor: AppPalette.primary,
+                                  dotColor: AppPalette.primary.withOpacity(0.5),
+                                  type: WormType.thinUnderground,
+                                ),
                               ),
                               TextButton(
-                                onPressed: () =>
-                                    index != onboardingItems.length - 1
-                                        ? viewModel.skipToNextPage()
-                                        : viewModel.goToAuth(context),
+                                onPressed: () => index != onboardingItems.length - 1
+                                  ? viewModel.skipToNextPage()
+                                  : viewModel.goToAuth(context),
                                 style: TextButton.styleFrom(
-                                    foregroundColor: AppPalette.whiteColor,
-                                    backgroundColor: AppPalette.primary,
-                                    minimumSize: const Size(50, 50)),
+                                  foregroundColor: AppPalette.whiteColor,
+                                  backgroundColor: AppPalette.primary,
+                                  minimumSize: const Size(50, 50),
+                                ),
                                 child: const Icon(Icons.arrow_forward),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               );
-            });
-      },
-    ));
+            },
+          );
+        },
+      ),
+    );
   }
 }

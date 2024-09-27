@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomClipperPath extends CustomClipper<Path> {
   @override
-  getClip(Size size) {
+  Path getClip(Size size) {
     double w = size.width;
     double h = size.height;
     final path = Path();
-    path.lineTo(0, size.height * 0.9);
+    
+    path.lineTo(0, h * 0.9);
     path.quadraticBezierTo(
       w / 2,
       h,
@@ -15,6 +16,7 @@ class CustomClipperPath extends CustomClipper<Path> {
     );
     path.lineTo(w, 0);
     path.close();
+    
     return path;
   }
 

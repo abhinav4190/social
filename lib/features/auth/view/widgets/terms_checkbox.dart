@@ -25,12 +25,10 @@ class TermsCheckbox extends StatelessWidget {
             onChanged: onChanged,
           ),
         ),
-        const SizedBox(
-          width: 6,
-        ),
+        const SizedBox(width: 6),
         const AuthOptionRow(
           promptText: 'Agree with',
-          actionText: 'Terms & Condition',
+          actionText: 'Terms & Conditions', // Fixed spelling
         ),
       ],
     );

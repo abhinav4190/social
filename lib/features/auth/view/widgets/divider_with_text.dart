@@ -5,12 +5,17 @@ import 'package:social/core/theme/app_palette.dart';
 class DividerWithText extends StatelessWidget {
   final String text;
   final double width;
-  const DividerWithText({super.key, required this.text, required this.width});
+
+  const DividerWithText({
+    super.key,
+    required this.text,
+    required this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-       width: width,
+      width: width,
       child: Row(
         children: [
           Expanded(

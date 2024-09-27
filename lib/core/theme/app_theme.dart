@@ -18,7 +18,6 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         fillColor: AppPalette.greyColor.withOpacity(0.07),
         filled: true,
-       
         hintStyle: const TextStyle(fontSize: 14, color: AppPalette.greyColor),
         border: OutlineInputBorder(
             borderSide: BorderSide.none,

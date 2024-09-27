@@ -8,7 +8,6 @@ import 'package:social/features/auth/view/widgets/divider_with_text.dart';
 import 'package:social/features/auth/view/widgets/header.dart';
 import 'package:social/features/auth/view/widgets/social_buttons_row.dart';
 import 'package:social/features/auth/view/widgets/terms_checkbox.dart';
-import 'package:social/router.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -84,9 +83,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       SizedBox(height: constraints.maxHeight * 0.035),
                       CustomButton(
-                          onPressed: () =>
-                              context.goNamed(SigninScreen.routeName),
-                          buttonText: 'Sign Up'),
+                        onPressed: () => context.goNamed(SigninScreen.routeName),
+                        buttonText: 'Sign Up',
+                      ),
                       SizedBox(height: constraints.maxHeight * 0.045),
                       DividerWithText(
                         text: 'Or sign up with',

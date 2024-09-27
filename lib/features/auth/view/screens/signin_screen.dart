@@ -63,10 +63,11 @@ class _SigninScreenState extends State<SigninScreen> {
                       ),
                       SizedBox(height: constraints.maxHeight * 0.015),
                       const Align(
-                          alignment: Alignment.centerRight,
-                          child: ActionText(
-                            text: 'Forgot Password?',
-                          )),
+                        alignment: Alignment.centerRight,
+                        child: ActionText(
+                          text: 'Forgot Password?',
+                        ),
+                      ),
                       SizedBox(height: constraints.maxHeight * 0.035),
                       CustomButton(onPressed: () {}, buttonText: 'Sign In'),
                       SizedBox(height: constraints.maxHeight * 0.045),

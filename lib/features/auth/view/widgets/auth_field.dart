@@ -10,6 +10,7 @@ class AuthField extends StatelessWidget {
     this.isObscure = false,
     this.suffixIcon,
   });
+
   final String label;
   final String hintText;
   final TextEditingController controller;
@@ -23,7 +24,10 @@ class AuthField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 13,
+          ),
         ),
         const SizedBox(height: 5),
         SizedBox(
@@ -32,12 +36,17 @@ class AuthField extends StatelessWidget {
             controller: controller,
             obscureText: isObscure,
             obscuringCharacter: '*',
-            decoration:
-                InputDecoration(hintText: hintText, suffixIcon: suffixIcon),
+            decoration: InputDecoration(
+              hintText: hintText,
+              suffixIcon: suffixIcon,
+            ),
             cursorColor: AppPalette.greyColor,
-            style: const TextStyle(fontSize: 14, color: AppPalette.greyColor),
+            style: const TextStyle(
+              fontSize: 14,
+              color: AppPalette.greyColor,
+            ),
           ),
-        )
+        ),
       ],
     );
   }
